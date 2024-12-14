@@ -1,4 +1,3 @@
-# TODO : Solve the error for spaces in the text
 # TODO : Immplement this cipher for symbols and numbers
 
 num_to_str = {
@@ -63,6 +62,9 @@ def encrypt(text: str, key: int) -> str:
     encrypted_text = ""
     is_upper_case = False
     for letter in text:
+        if letter == ' ':
+            encrypted_text += ' '
+            continue
         if letter.isupper():
             is_upper_case = True
             letter = letter.lower()
@@ -80,6 +82,9 @@ def decrypt(text: int, key: int) -> str:
     decrypted_text = ""
     is_upper_case = False
     for letter in text:
+        if letter == ' ':
+            decrypted_text += ' '
+            continue
         if letter.isupper():
             is_upper_case = True
             letter = letter.lower()
@@ -94,7 +99,7 @@ def decrypt(text: int, key: int) -> str:
     return decrypted_text
 
 def main():
-    text = "Hello"
+    text = "Hello World"
     encrypted_text = encrypt(text, 3)
     print(encrypted_text)
     decrypted_text = decrypt(encrypted_text, 3)
